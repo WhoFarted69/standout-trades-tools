@@ -27,25 +27,25 @@ function buildServer(): McpServer {
         {
             title: "Calculate Job Profit",
             description:
-                "Calculates estimated job profit for contractors and home-service businesses. " +
-                "Given truck and equipment daily costs, days on the job, travel distance, fuel economy, " +
-                "fuel price, equipment fuel tanks, other costs and the price charged, it returns truck miles " +
-                "and gallons, fuel expenses, total cost, profit, profit percentage (return on cost), " +
+                "Calculates estimated job profitability for contractors and home-service businesses. " +
+                "Using vehicle and equipment daily costs, days on the job, travel distance and truck fuel economy, " +
+                "fuel price, equipment fuel tank usage, other job costs, and the price charged to the customer, " +
+                "it returns truck miles and gallons, fuel expenses, total cost, profit, profit percentage (return on cost), " +
                 "margin percentage (on price), and the break-even price. " +
-                "Pure calculation: it does not access the internet or store any data. " +
-                "Blank, negative or invalid numbers are treated as 0. All money is in USD.",
+                "All inputs are required; provide 0 for any cost that does not apply. " +
+                "Pure calculation: it does not access the internet or store any data. All money is in USD.",
             inputSchema: {
-                vehicleCost: z.number().optional().describe("Truck/vehicle cost per day, in dollars."),
-                equipmentCost: z.number().optional().describe("Equipment cost per day, in dollars (rented or owned)."),
-                days: z.number().optional().describe("Number of days on the job."),
-                mpg: z.number().optional().describe("Truck fuel economy in miles per gallon."),
-                distance: z.number().optional().describe("One-way distance to the customer, in miles."),
-                roundTrip: z.boolean().optional().describe("True if the truck drives the distance both ways. Defaults to false."),
-                fuelPrice: z.number().optional().describe("Fuel price per gallon, in dollars (gas or diesel)."),
-                tankSize: z.number().optional().describe("Equipment fuel tank size, in gallons."),
-                tanks: z.number().optional().describe("Number of equipment tanks used on the job."),
-                otherCosts: z.number().optional().describe("Other job costs in dollars (dump fees, materials, etc.)."),
-                jobPrice: z.number().optional().describe("Amount charged to the customer, in dollars."),
+                vehicleCost: z.number().describe("Truck/vehicle cost per day, in dollars."),
+                equipmentCost: z.number().describe("Equipment cost per day, in dollars (rented or owned)."),
+                days: z.number().describe("Number of days on the job."),
+                mpg: z.number().describe("Truck fuel economy in miles per gallon."),
+                distance: z.number().describe("One-way distance to the customer, in miles."),
+                roundTrip: z.boolean().describe("True if the truck drives the distance both ways, false for one way only."),
+                fuelPrice: z.number().describe("Fuel price per gallon, in dollars (gas or diesel)."),
+                tankSize: z.number().describe("Equipment fuel tank size, in gallons."),
+                tanks: z.number().describe("Number of equipment tanks used on the job."),
+                otherCosts: z.number().describe("Other job costs in dollars (dump fees, materials, etc.)."),
+                jobPrice: z.number().describe("Amount charged to the customer, in dollars."),
             },
             annotations: {
                 readOnlyHint: true,
