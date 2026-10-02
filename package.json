@@ -1,0 +1,20 @@
+{
+  "name": "standout-trades-tools",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "node calculate_job_profit.test.ts",
+    "inspect": "npx @modelcontextprotocol/inspector"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.31.0",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.4",
+    "typescript": "^7.0.2"
+  }
+}
