@@ -10,6 +10,15 @@ import { calculate_job_profit } from "./calculate_job_profit.ts"
 
 const PORT = Number(process.env.PORT) || 3000
 
+// TEMPORARY: "*" for testing with MCP Inspector. Restrict before production.
+const CORS_HEADERS = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers":
+        "Content-Type, Accept, Mcp-Protocol-Version, Mcp-Session-Id, Last-Event-ID, Authorization",
+    "Access-Control-Expose-Headers": "Mcp-Session-Id",
+}
+
 function buildServer(): McpServer {
     const server = new McpServer({ name: "standout-trades-tools", version: "0.1.0" })
 
@@ -61,6 +70,11 @@ const httpServer = createServer(async (req, res) => {
     const path = (req.url ?? "").split("?")[0]
     if (path !== "/mcp") {
         res.writeHead(404, { "Content-Type": "text/plain" }).end("Not found")
+        return
+    }
+    for (const [name, value] of Object.entries(CORS_HEADERS)) res.setHeader(name, value)
+    if (req.method === "OPTIONS") {
+        res.writeHead(204).end()
         return
     }
     if (req.method !== "POST") {
