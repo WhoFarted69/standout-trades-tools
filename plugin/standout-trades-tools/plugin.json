@@ -1,0 +1,32 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "standout-trades-tools",
+  "version": "1.0.0",
+  "description": "Estimate the true profit on a contractor or home-service job before you bid it.",
+  "author": {
+    "name": "StandoutTrades.com",
+    "url": "https://www.standouttrades.com/"
+  },
+  "homepage": "https://www.standouttrades.com/",
+  "keywords": ["contractor", "home services", "job costing", "profit", "estimate", "bidding"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Job Profit Calculator",
+        "shortDescription": "Know Your Profit Before Bids",
+        "longDescription": "Calculate the true profit on a job before you send the quote. Job Profit Calculator factors in truck and equipment costs, fuel usage, travel distance, other expenses, and your customer price to show your estimated total cost, profit, profit percentage, margin, and break-even price. Built for contractors and home-service professionals who want to know whether a job actually makes money before they bid it.",
+        "developerName": "StandoutTrades.com",
+        "category": "Business & Operations",
+        "capabilities": ["Read"],
+        "websiteURL": "https://www.standouttrades.com/",
+        "privacyPolicyURL": "https://www.standouttrades.com/privacypolicy",
+        "termsOfServiceURL": "https://www.standouttrades.com/termsandconditions",
+        "supportURL": "https://www.standouttrades.com/contact-us",
+        "logo": "./assets/logo.webp",
+        "logoDark": "./assets/logo-dark.jpg",
+        "composerIcon": "./assets/logo.webp",
+        "composerIconDark": "./assets/logo-dark.jpg"
+      }
+    }
+  }
+}

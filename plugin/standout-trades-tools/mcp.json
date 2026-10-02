@@ -1,0 +1,9 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "standout-trades-tools": {
+      "type": "streamable-http",
+      "url": "https://standout-trades-tools.onrender.com/mcp"
+    }
+  }
+}
